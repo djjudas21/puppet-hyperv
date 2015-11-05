@@ -1,0 +1,14 @@
+{
+  "name": "jgazeley-hyperv",
+  "version": "0.1.0",
+  "author": "jgazeley",
+  "summary": "Install Hyper-V tools on Linux guests with Puppet",
+  "license": "Apache-2.0",
+  "source": "https://github.com/djjudas21/puppet-hyperv",
+  "project_page": "https://github.com/djjudas21/puppet-hyperv",
+  "issues_url": "https://github.com/djjudas21/puppet-hyperv/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
