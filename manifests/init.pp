@@ -4,10 +4,10 @@
 
 class hyperv {
 
-  case $::osfamily {
-    'Red Hat': { include hyperv::redhat }
+  case $::facts['os']['family'] {
+    'RedHat': { include hyperv::redhat }
     'Debian': { include hyperv::debian }
-    default: { fail("jgazeley/hyperv does not support ${::osfamily}") }
+    default : { fail("hyperv class does not support ${facts['os']['family']}") }
   }
 
 }
