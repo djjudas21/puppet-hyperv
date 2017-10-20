@@ -6,13 +6,16 @@ class hyperv::debian {
     'Ubuntu': {
 
       # Are we running one of the virtual kernels?
-      $virtual = $::kernelrelease ? {
-        /virtual$/ => '-virtual',
-        default   => '',
+      if $::kernelrelease =~ /virtual$/ {
+        $suffix = '-virtual'
+      } elsif versioncmp("${::operatingsystemrelease}", '16.04') >= 0 {
+        $suffix = '-generic'
+      } else {
+        $suffix = ''
       }
 
       # List of packages to install
-      $packagelist = ["linux-tools${virtual}", "linux-cloud-tools${virtual}"]
+      $packagelist = ["linux-tools${suffix}", "linux-cloud-tools${suffix}"]
 
       if $::operatingsystemrelease  == '14.04' {
         concat($packagelist, 'hv-kvp-daemon-init')
