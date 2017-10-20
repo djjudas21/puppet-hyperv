@@ -8,7 +8,10 @@ class hyperv::debian {
       # Are we running one of the virtual kernels?
       $virtual = $::kernelrelease ? {
         /virtual$/ => '-virtual',
-        default   => '',
+        default   => versioncmp($::operatingsystemrelease, '16.04') >= 0 ? {
+          true    => '-generic',
+          default => '',
+        },
       }
 
       # List of packages to install
