@@ -15,7 +15,7 @@ class hyperv::debian {
       }
 
       # List of packages to install
-      $packagelist = ["linux-tools${virtual}", "linux-cloud-tools${virtual}"]
+      $packagelist = ["linux-tools${suffix}", "linux-cloud-tools${suffix}"]
 
       if $::operatingsystemrelease  == '14.04' {
         concat($packagelist, 'hv-kvp-daemon-init')
